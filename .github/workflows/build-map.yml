@@ -82,7 +82,7 @@ jobs:
           echo "ADDRESS_DB=$PWD/$db" >> "$GITHUB_ENV"
 
       - name: 建置
-        run: bin/build.sh dist
+        run: bash bin/build.sh dist
 
       - name: 發布 Release
         run: |
