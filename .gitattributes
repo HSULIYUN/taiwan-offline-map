@@ -1,0 +1,7 @@
+# 確保 Windows 和 Mac/Linux 拿到的換行格式都正確
+*.sh       text eol=lf
+*.command  text eol=lf
+*.java     text eol=lf
+*.yml      text eol=lf
+*.bat      text eol=crlf
+*.ps1      text eol=crlf

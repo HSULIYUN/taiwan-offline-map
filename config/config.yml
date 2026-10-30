@@ -1,0 +1,24 @@
+# GraphHopper 設定（GraphHopper 10.0）
+# 工作目錄是 config/，visitmap_car.json 也放在這裡。
+# graph.location 和埠號會由地圖服務／建置程式依情況自動換掉，這裡維持預設即可。
+graphhopper:
+  graph.location: graph-cache
+  graph.encoded_values: car_access, car_average_speed
+  import.osm.ignored_highways: footway,cycleway,path,pedestrian,steps
+
+  profiles:
+    - name: car
+      custom_model_files: [visitmap_car.json]
+
+  profiles_ch:
+    - profile: car
+
+server:
+  application_connectors:
+    - type: http
+      port: 8989
+      bind_host: 127.0.0.1
+  admin_connectors:
+    - type: http
+      port: 8990
+      bind_host: 127.0.0.1

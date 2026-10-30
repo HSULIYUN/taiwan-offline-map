@@ -1,0 +1,22 @@
+# 地圖資料由 GitHub Actions 建置、各台電腦自動下載，不放進 git
+releases/
+current
+current.txt
+current.txt.tmp
+logs/
+tools/
+dist/
+work/
+prev/
+*.mbtiles
+*.db
+*.db.gz
+*.pbf
+graph-cache/
+
+# 舊路徑的相容連結（只存在於原作者電腦）
+geo/
+address/
+
+.DS_Store
+Thumbs.db
