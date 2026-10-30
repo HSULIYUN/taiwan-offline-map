@@ -6,6 +6,8 @@
 - 各台電腦上的地圖服務**開機時和每天自動檢查**，有新版就下載、驗證、切換，有問題自動退回舊版
 - Mac、Windows、Linux 都能用，不需要自己建置資料、也不用設定排程
 
+要佈署到伺服器、或讓多個專案共用一台地圖主機，請看 **[佈署手冊](docs/deployment.md)**（單機、地端共用伺服器、雲端主機三種情境）。
+
 | 內容 | 位置 | 用途 |
 |---|---|---|
 | 路線服務 | `http://127.0.0.1:8989` | GraphHopper 汽車路線規劃（[API 說明](https://docs.graphhopper.com/openapi/routing/getroute)） |
@@ -74,7 +76,7 @@ java bin\MapService.java status        # Windows（在專案資料夾裡執行�
 |---|---|---|
 | `github.repo` | 自動判斷 | 從哪個 repo 下載，用 git clone 的不用填 |
 | `port` | 8989 | 路線服務的埠號 |
-| `bind.host` | 127.0.0.1 | 只有本機能連；改成 `0.0.0.0` 可讓其他電腦連，請自行用防火牆限制來源 |
+| `bind.host` | 127.0.0.1 | 只有本機能連；改成 `0.0.0.0` 可讓其他電腦連，務必搭配防火牆，見[佈署手冊](docs/deployment.md) |
 | `java.xmx` | 2g | GraphHopper 最多可用記憶體 |
 | `check.interval.hours` | 24 | 多久檢查一次新版 |
 | `keep.releases` | 2 | 本機保留幾個版本 |
@@ -126,6 +128,7 @@ bin/install-service.sh            Mac / Linux 設定開機自動啟動
 bin/windows/                      Windows 安裝、移除、啟動
 bin/build.sh、bin/common.sh       建置地圖資料
 config/                           設定檔
+docs/deployment.md                佈署手冊
 install.bat、uninstall.bat、start.bat   Windows 雙擊用
 start.command                     Mac 雙擊用
 LATEST.md                         目前最新版本資訊（自動更新）

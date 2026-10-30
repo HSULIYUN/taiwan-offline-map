@@ -522,7 +522,9 @@ public class MapService {
             if (t.startsWith("admin_connectors:")) section = "admin";
             if (t.startsWith("graph.location:")) line = indent + "graph.location: \"" + graph + "\"";
             else if (t.startsWith("port:")) line = indent + "port: " + (section.equals("admin") ? adminPort() : port());
-            else if (t.startsWith("bind_host:")) line = indent + "bind_host: " + cfgStr("bind.host", "127.0.0.1");
+            // 管理埠能看到系統內部資訊，永遠只綁本機；bind.host 只影響路線服務本身
+            else if (t.startsWith("bind_host:")) line = indent + "bind_host: "
+                    + (section.equals("admin") ? "127.0.0.1" : cfgStr("bind.host", "127.0.0.1"));
             out.add(line);
         }
         return out;
