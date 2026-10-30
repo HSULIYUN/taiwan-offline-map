@@ -25,15 +25,15 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04     # 固定版本，GitHub 換新系統時不會突然壞掉
     timeout-minutes: 120
     env:
       GH_TOKEN: ${{ github.token }}
       BUILD_XMX: 8g
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v6
         with:
           distribution: temurin
           java-version: "21"
@@ -42,7 +42,7 @@ jobs:
         run: command -v sqlite3 || (sudo apt-get update -q && sudo apt-get install -y -q sqlite3)
 
       - name: 快取建置工具與底圖素材
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: tools
           key: tools-${{ hashFiles('bin/common.sh') }}

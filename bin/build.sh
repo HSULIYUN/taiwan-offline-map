@@ -139,6 +139,7 @@ stop_pid "$TEST_PID"; TEST_PID=""
 step "7/7 打包"
 rm -rf "$OUT"
 mkdir -p "$OUT"
+OUT="$(cd "$OUT" && pwd)"   # 轉成完整路徑，下面切換資料夾壓縮時才找得到
 mv "$WORK/taiwan.mbtiles" "$OUT/taiwan.mbtiles"
 ( cd "$WORK" && zip -qr -1 "$OUT/graph-cache.zip" graph-cache )
 gzip -c "$WORK/taiwan_address.db" > "$OUT/taiwan_address.db.gz"
